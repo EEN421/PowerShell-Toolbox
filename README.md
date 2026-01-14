@@ -125,7 +125,7 @@ Technical blog & experiments: [**🔗DevSecOpsDad.com**](www.devsecopsdad.com)
   </p>
   <a href="https://a.co/d/4vveVCI" target="_blank" rel="noopener noreferrer">
     <img 
-      src="EEN421/KQL-Toolbox-Book/book/assets/img/KQL Toolbox Cover1.png"
+      src="https://github.com/EEN421/KQL-Toolbox/blob/Main/KQL%20Toolbox%20Cover.png"
       alt="Ultimate Microsoft XDR for Full Spectrum Cyber Defense"
       style="max-width: 235px; box-shadow: 0 16px 40px rgba(0,0,0,.45); border-radius: 8px;"
     />
