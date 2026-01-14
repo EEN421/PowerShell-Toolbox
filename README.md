@@ -130,5 +130,4 @@ Technical blog & experiments: [**🔗DevSecOpsDad.com**](www.devsecopsdad.com)
       style="max-width: 235px; box-shadow: 0 16px 40px rgba(0,0,0,.45); border-radius: 8px;"
     />
   </a>
-  
-🛠️ Long-form work (books, toolboxes, decision surfaces): this repo is part of that ecosystem
+
