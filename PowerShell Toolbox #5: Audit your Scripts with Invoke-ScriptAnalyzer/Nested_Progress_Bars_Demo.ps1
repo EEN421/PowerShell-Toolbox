@@ -30,7 +30,7 @@
   Displays a parent progress bar for batches and a nested child progress bar for items per batch.
 
 .NOTES
-  Author  : <Your Name>
+  Author  : DevSecOpsDad
   Version : 1.0
 
   Behavior Notes:
