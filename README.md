@@ -10,7 +10,7 @@ This is not an experimental script dump. If a script lives here, it earned its p
 
 <br/>
 
-## Purpose of This Repository
+## 🎯 Purpose of This Repository
 
 Most PowerShell repos optimize for **quantity**.
 
@@ -27,7 +27,7 @@ If a script lives here, it earned its place.
 
 <br/>
 
-## How This Repo Is Organized
+## 🧭 How This Repo Is Organized
 
 The repository mirrors the structure of the PowerShell Toolbox book:
 
@@ -42,7 +42,7 @@ Repo/
 
 <br/>
 
-## Relationship to the Book
+## 📘 Relationship to the Book
 
 The book provides:
 - The why
@@ -59,7 +59,7 @@ The book stands on its own. This repo makes it operationally useful.
 
 <br/>
 
-## Versioning & Stability
+## 🔁 Versioning & Stability
 - Scripts are versioned alongside book releases
 - Breaking changes are documented in CHANGELOG.md
 - Scripts are not silently modified
@@ -69,7 +69,7 @@ If a script changes here, it changes for a reason.
 
 <br/>
 
-## What This Repo Is Not
+## ⚠️ What This Repo Is Not
 
 To avoid confusion, this repository is deliberately not:
 - A dumping ground for half-finished experiments
@@ -81,7 +81,7 @@ If you want the wider (messier) lab notebook, see my main PowerShell sandbox rep
 
 <br/>
 
-## Prerequisites & Assumptions
+## 🧠 Prerequisites & Assumptions
 
 Most scripts assume:
 - You can run PowerShell 7+ (recommended) or Windows PowerShell 5.1 where noted
@@ -93,7 +93,7 @@ These scripts favor defensibility over convenience.
 
 <br/>
 
-## License
+## 📎 License
 
 See LICENSE for usage terms.
 
@@ -101,7 +101,7 @@ You are free to use these scripts in your environments. Attribution is appreciat
 
 <br/>
 
-## More from DevSecOpsDad
+## ⚡ More from DevSecOpsDad
 
 Technical blog & experiments: DevSecOpsDad.com
 
