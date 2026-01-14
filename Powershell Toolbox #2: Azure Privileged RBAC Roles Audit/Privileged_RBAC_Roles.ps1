@@ -1,24 +1,115 @@
-# Azure RBAC Privileged Roles Audit Script
-# Author: Ian Hanley 
-#
-# Description:
-#
-# This script is a purpose-built PowerShell tool that identifies and reports on privileged role assignments within an Azure environment.
-# It scans the selected subscription for users, groups, and service principals assigned elevated Azure Role-Based Access Control (RBAC) roles such as Owner,
-# Contributor, and Security Admin across all scopes.
-#
-# This is ideal for security teams, auditors, and Azure administrators seeking to maintain least-privilege access principles, enforce governance, or prepare for
-# compliance reviews. It outputs a detailed CSV report and optionally generates an HTML summary for executive-level visibility.
-#
-# By surfacing privileged role assignments in a clear, actionable format, this tool enhances your ability to monitor, review,
-# and remediate access risks in alignment with Zero Trust and Microsoft security best practices.
-#
-# Notes:
-# Ensure you're logged into Azure before running this script
-# Run Connect-AzAccount if not already authenticated
-# Requires Az.Resources version that includes:
-#   Get-AzRoleAssignmentScheduleInstance
-#   Get-AzRoleEligibilityScheduleInstance
+<#
+.SYNOPSIS
+  Audits Azure RBAC privileged role assignments (including PIM status where available)
+  and exports findings to CSV, HTML, or both.
+
+.DESCRIPTION
+  This script identifies principals (users, groups, and service principals) assigned to
+  elevated Azure RBAC roles across a target subscription.
+
+  It performs:
+  - Subscription-level RBAC assignment discovery
+  - Optional resource group-level RBAC assignment discovery
+  - Filtering to a defined list of privileged role names (e.g., Owner, Contributor, Security Administrator)
+  - Principal name resolution (User/Group/Service Principal) for readable reporting
+  - Optional PIM enrichment by pre-loading:
+      * Get-AzRoleAssignmentScheduleInstance (active PIM assignments)
+      * Get-AzRoleEligibilityScheduleInstance (eligible PIM assignments)
+    and classifying each assignment as:
+      * Active (PIM - <status>)
+      * Eligible (PIM - <status>)
+      * Direct (non-PIM)
+      * Unknown (when PIM lookup is unavailable)
+
+  Outputs include:
+  - A detailed CSV report of all privileged assignments found
+  - An optional HTML report with summary tables and a detailed assignments table
+  - Console summary statistics (role, principal type, and scope breakdown)
+
+  This script is intended for security teams, auditors, and Azure administrators to support:
+  - Least privilege enforcement
+  - Governance and access reviews
+  - Compliance preparation
+  - Privileged access risk identification and remediation
+
+.PARAMETER SubscriptionId
+  Optional. The Azure subscription ID to analyze.
+  If not provided, the script uses the currently selected Az context subscription.
+  If no Az context exists, the script exits with an instructional message.
+
+.PARAMETER OutputCSVPath
+  Optional. Full path to the CSV report output file.
+  Defaults to a timestamped filename in the current directory.
+
+.PARAMETER OutputHTMLPath
+  Optional. Full path to the HTML report output file.
+  Defaults to a timestamped filename in the current directory.
+
+.PARAMETER IncludeResourceGroups
+  Optional. When set (default: $true), the script scans resource group scopes in addition
+  to the subscription scope. Disable to reduce runtime and output volume.
+
+.PARAMETER OutputFormat
+  Optional. Selects which report formats to generate:
+  - CSV  : Exports CSV only
+  - HTML : Exports HTML only
+  - Both : Exports both CSV and HTML (default)
+
+.INPUTS
+  None.
+
+.OUTPUTS
+  System.Object
+  Returns an array of PSCustomObject results to the pipeline, enabling downstream filtering
+  or additional reporting.
+
+.EXAMPLE
+  Example 1: Run against the current Az context subscription (default output: CSV + HTML)
+  -------------------------------------------------------------------------------
+  PS> Connect-AzAccount
+  PS> .\Azure_RBAC_PrivilegedRoles_Audit.ps1
+
+  Uses the current Az context subscription and generates timestamped CSV and HTML reports.
+
+.EXAMPLE
+  Example 2: Run against a specific subscription and export CSV only
+  ------------------------------------------------------------------
+  PS> Connect-AzAccount
+  PS> .\Azure_RBAC_PrivilegedRoles_Audit.ps1 `
+        -SubscriptionId '00000000-0000-0000-0000-000000000000' `
+        -OutputFormat CSV `
+        -OutputCSVPath 'C:\Temp\AzurePrivilegedRoles.csv'
+
+  Scans privileged role assignments and exports a CSV report to the specified path.
+
+.EXAMPLE
+  Example 3: Faster scan (subscription scope only) with HTML report
+  ----------------------------------------------------------------
+  PS> Connect-AzAccount
+  PS> .\Azure_RBAC_PrivilegedRoles_Audit.ps1 -IncludeResourceGroups:$false -OutputFormat HTML
+
+  Limits discovery to subscription-level assignments and produces an HTML report.
+
+.NOTES
+  Author  : DevSecOpsDad
+  Version : 1.0
+
+  Prerequisites:
+  - Az.Accounts
+  - Az.Resources (version must include Get-AzRoleAssignmentScheduleInstance and
+    Get-AzRoleEligibilityScheduleInstance to enable PIM enrichment)
+
+  Permissions:
+  - Reader or higher on the subscription and resource groups to enumerate role assignments
+  - Additional permissions may be required to query PIM schedule instances depending on tenant configuration
+
+  Behavior Notes:
+  - Subscription selection is based on -SubscriptionId or the current Az context.
+  - If PIM schedule instance retrieval fails, PIM status is reported as 'Unknown' and the audit continues.
+  - The role list is name-based; ensure role names match your tenant’s RBAC role display names.
+
+#>
+
 
 # Parameters
 param(
@@ -563,4 +654,5 @@ Write-ProgressHelper -Activity "Analyzing Azure RBAC" -Status "Completed" -Perce
 Write-Host "`nAzure RBAC Privileged Roles Audit completed!" -ForegroundColor Cyan
 
 # Return results for pipeline usage
+
 return $results
