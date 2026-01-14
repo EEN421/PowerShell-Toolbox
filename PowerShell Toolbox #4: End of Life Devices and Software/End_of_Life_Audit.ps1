@@ -2,29 +2,92 @@
 
 <#
 .SYNOPSIS
-  Summarizes devices with End-of-Life (EoL / End-of-Support) software counts per device
-  by running a Defender hunting query via Microsoft Graph and exporting results to CSV.
+  Runs a Microsoft Defender Advanced Hunting query via Microsoft Graph to identify devices
+  running End-of-Life / End-of-Support software, then exports a per-device summary to CSV.
 
 .DESCRIPTION
-  - Ensures you're connected to Microsoft Graph with ThreatHunting.Read.All (or App-only).
-  - Executes a KQL query against /security/runHuntingQuery.
-  - Produces a CSV with DeviceName, EOLSoftwareCount, OldestEOLDate, and EOLSoftwareList.
+  This script executes a KQL hunting query against the Microsoft Graph Security endpoint
+  (/security/runHuntingQuery) to summarize devices that have software with an
+  EndOfSupportDate that is in the past (<= now()).
+
+  It produces a device-level rollup including:
+  - DeviceName
+  - EOLSoftwareCount (number of EOL/EOS software titles observed per device)
+  - OldestEOLDate (earliest EndOfSupportDate observed for the device)
+  - EOLSoftwareList (set of software names, normalized to a readable '; '-delimited string)
+
+  Authentication and permissions:
+  - Delegated auth: requires ThreatHunting.Read.All scope
+  - App-only auth: requires ThreatHunting.Read.All application permission with admin consent
+
+  Connection behavior:
+  - If an existing Graph context is present, it is reused.
+  - If no context exists, the script can auto-connect unless -SkipAutoConnect is specified.
+  - If PIM / conditional access / tenant restrictions prevent connection, the script fails fast
+    with actionable error messaging.
+
+  The output directory is created automatically if it does not exist.
 
 .PARAMETER OutputPath
-  Full path to the CSV output. The folder is created if it doesn't exist.
+  Full path to the CSV output file.
+  Defaults to a timestamped CSV in the current directory. If the parent folder does not exist,
+  it is created automatically.
 
 .PARAMETER TenantId
-  Optional. If provided, the script will attempt to connect to Graph for that tenant.
+  Optional. If provided, Connect-MgGraph is attempted against the specified tenant.
 
 .PARAMETER SkipAutoConnect
-  Switch. If set, the script will NOT attempt to connect automatically and will fail if no context exists.
+  Switch. If set, the script will not attempt to connect automatically. Execution will fail
+  if no Microsoft Graph context already exists.
+
+.INPUTS
+  None.
+
+.OUTPUTS
+  CSV file containing per-device EOL/EOS software summary.
+  Writes a console summary including the top 10 devices by EOL software count.
 
 .EXAMPLE
-1. Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
-2. Install-Module Microsoft.Graph -Scope CurrentUser -AllowClobber
-3. Connect-MgGraph -Scopes 'ThreatHunting.Read.All'
-4. .\EOLAutomated.ps1 -OutputPath 'C:\Temp\EndOfSupport_DeviceSummary.csv'
+  Example 1: Delegated auth (interactive) and CSV export
+  -----------------------------------------------------
+  PS> Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
+  PS> Install-Module Microsoft.Graph -Scope CurrentUser -AllowClobber
+  PS> Connect-MgGraph -Scopes 'ThreatHunting.Read.All'
+  PS> .\EOLAutomated.ps1 -OutputPath 'C:\Temp\EndOfSupport_DeviceSummary.csv'
+
+  Connects to Microsoft Graph with delegated permissions and exports results to CSV.
+
+.EXAMPLE
+  Example 2: Let the script auto-connect (delegated auth) and use default output path
+  ------------------------------------------------------------------------------
+  PS> .\EOLAutomated.ps1
+
+  Attempts to connect to Graph if no context exists and writes a timestamped CSV.
+
+.EXAMPLE
+  Example 3: Require pre-existing Graph context (fail fast if not connected)
+  -------------------------------------------------------------------------
+  PS> Connect-MgGraph -Scopes 'ThreatHunting.Read.All'
+  PS> .\EOLAutomated.ps1 -SkipAutoConnect
+
+  Uses the existing Graph connection and throws an error if none is available.
+
+.NOTES
+  Author  : DevSecOpsDad
+  Version : 1.0
+
+  Prerequisites:
+  - Microsoft.Graph.Authentication module
+  - Microsoft Defender for Endpoint / Defender XDR hunting visibility for the tenant
+  - Appropriate Graph permissions (delegated scope or app permission)
+
+  Behavior Notes:
+  - Uses the v1.0 Graph endpoint for /security/runHuntingQuery.
+  - App-only sessions have no Scopes property; the script cannot validate scopes in that mode.
+  - EOLSoftwareList is normalized to a readable string even if the API returns it as JSON.
+
 #>
+
 
 [CmdletBinding()]
 param(
@@ -205,4 +268,5 @@ try {
     Write-Host $_.Exception.Response.Content
   }
   throw
+
 }
