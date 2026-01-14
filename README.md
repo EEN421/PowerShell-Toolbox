@@ -103,8 +103,6 @@ You are free to use these scripts in your environments. Attribution is appreciat
 
 ## ⚡ More from DevSecOpsDad
 
-## ⚡ More from DevSecOpsDad
-
 Technical blog & experiments: [**🔗DevSecOpsDad.com**](www.devsecopsdad.com)
 
 <div style="text-align:left; margin: 2.5em 0;">
@@ -119,10 +117,6 @@ Technical blog & experiments: [**🔗DevSecOpsDad.com**](www.devsecopsdad.com)
       style="max-width: 235px; box-shadow: 0 16px 40px rgba(0,0,0,.45); border-radius: 8px;"
     />
   </a>
-
-  ## ⚡ More from DevSecOpsDad
-
-Technical blog & experiments: [**🔗DevSecOpsDad.com**](www.devsecopsdad.com)
 
 <div style="text-align:left; margin: 2.5em 0;">
     <p style="margin-top: 0.75em; font-size: 0.95em; opacity: 0.85;">
