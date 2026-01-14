@@ -117,7 +117,7 @@ You are free to use these scripts in your environments. Attribution is appreciat
   </a>
   </div>
 
-<br/>
+<br/><br/>
 
 <div style="text-align:left; margin: 2.5em 0;">
     <p style="margin-top: 0.75em; font-size: 0.95em; opacity: 0.85;">
@@ -133,7 +133,7 @@ You are free to use these scripts in your environments. Attribution is appreciat
   </a>
   </div>
 
-<br/>
+<br/><br/>
 
 <div style="text-align:left; margin: 2.5em 0;">
     <p style="margin-top: 0.75em; font-size: 0.95em; opacity: 0.85;">
