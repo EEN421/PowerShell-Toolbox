@@ -107,6 +107,22 @@ Technical blog & experiments: [**🔗DevSecOpsDad.com**](www.devsecopsdad.com)
 
 <div style="text-align:left; margin: 2.5em 0;">
     <p style="margin-top: 0.75em; font-size: 0.95em; opacity: 0.85;">
+    🔗 <strong>DevSecOpsDad</strong><br/>
+    Microsoft XDR, KQL, real-world security engineering, and other fun stuff from DevSecOpsDad, your friendly neighbourhood Attack Surface Samurai.
+  </p>
+  <a href="https://www.devsecopsdad.com" target="_blank" rel="noopener noreferrer">
+    <img 
+      src="EEN421/PowerShell-Toolbox/DevSecOpsDad.png"
+      alt="DevSecOpsDad.com"
+      style="max-width: 235px; box-shadow: 0 16px 40px rgba(0,0,0,.45); border-radius: 8px;"
+    />
+  </a>
+  </div>
+
+<br/>
+
+<div style="text-align:left; margin: 2.5em 0;">
+    <p style="margin-top: 0.75em; font-size: 0.95em; opacity: 0.85;">
     📘 <strong>Ultimate Microsoft XDR for Full Spectrum Cyber Defense</strong><br/>
     Real-world detections, Sentinel, Defender XDR, and Entra ID — end to end
   </p>
@@ -119,12 +135,14 @@ Technical blog & experiments: [**🔗DevSecOpsDad.com**](www.devsecopsdad.com)
   </a>
   </div>
 
+<br/>
+
 <div style="text-align:left; margin: 2.5em 0;">
     <p style="margin-top: 0.75em; font-size: 0.95em; opacity: 0.85;">
     📘 <strong>KQL Toolbox</strong><br/>
     Turning Logs into Decisions in Microsoft Sentinel & Defender XDR
   </p>
-  <a href="https://a.co/d/4vveVCI" target="_blank" rel="noopener noreferrer">
+  <a href="EEN421/PowerShell-Toolbox/DevSecOpsDad.png" target="_blank" rel="noopener noreferrer">
     <img 
       src="https://github.com/EEN421/KQL-Toolbox/blob/Main/KQL%20Toolbox%20Cover.png"
       alt="KQL Toolbox: Turning Logs into Decisions in Microsoft Sentinel & Defender XDR"
