@@ -34,7 +34,7 @@
   Displays a progress bar while simulating the processing of multiple items.
 
 .NOTES
-  Author  : <Your Name>
+  Author  : DevSecOpsDad
   Version : 1.0
 
   Behavior Notes:
@@ -70,3 +70,4 @@ Write-Progress -Activity "Processing files..." -Completed
 # Optional: Confirm completion
 
 Write-Host "✔ All $totalFiles files have been processed successfully!"
+
