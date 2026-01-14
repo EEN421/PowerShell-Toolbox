@@ -128,7 +128,7 @@ Technical blog & experiments: [**🔗DevSecOpsDad.com**](www.devsecopsdad.com)
     <img 
       src="https://github.com/EEN421/KQL-Toolbox/blob/Main/KQL%20Toolbox%20Cover.png"
       alt="KQL Toolbox: Turning Logs into Decisions in Microsoft Sentinel & Defender XDR"
-      style="max-width: 235px; box-shadow: 0 16px 40px rgba(0,0,0,.45); border-radius: 8px;"
+      style="width: 180px; box-shadow: 0 16px 40px rgba(0,0,0,.45); border-radius: 8px;"
     />
   </a>
 </div>
