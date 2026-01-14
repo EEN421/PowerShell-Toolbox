@@ -131,4 +131,4 @@ Technical blog & experiments: [**🔗DevSecOpsDad.com**](www.devsecopsdad.com)
     />
   </a>
   
-Long-form work (books, toolboxes, decision surfaces): this repo is part of that ecosystem
+🛠️ Long-form work (books, toolboxes, decision surfaces): this repo is part of that ecosystem
