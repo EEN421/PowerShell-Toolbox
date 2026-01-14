@@ -27,7 +27,7 @@ If a script lives here, it earned its place.
 
 <br/>
 
-## 🧭 How This Repo Is Organized
+## 📑 How This Repo Is Organized
 
 The repository mirrors the structure of the PowerShell Toolbox book:
 
@@ -42,7 +42,7 @@ Repo/
 
 <br/>
 
-## 📘 Relationship to the Book
+## 📖 Relationship to the Book
 
 The book provides:
 - The why
@@ -93,7 +93,7 @@ These scripts favor defensibility over convenience.
 
 <br/>
 
-## 📎 License
+## 🔑 License
 
 See LICENSE for usage terms.
 
