@@ -103,6 +103,6 @@ You are free to use these scripts in your environments. Attribution is appreciat
 
 ## ⚡ More from DevSecOpsDad
 
-Technical blog & experiments: DevSecOpsDad.com
+Technical blog & experiments: [DevSecOpsDad.com](www.devsecopsdad.com)
 
 Long-form work (books, toolboxes, decision surfaces): this repo is part of that ecosystem
