@@ -112,7 +112,7 @@ You are free to use these scripts in your environments. Attribution is appreciat
     <img 
       src="https://github.com/EEN421/PowerShell-Toolbox/blob/Main/DevSecOpsDad.png"
       alt="DevSecOpsDad.com"
-      style="max-width: 235px; box-shadow: 0 16px 40px rgba(0,0,0,.45); border-radius: 8px;"
+      style="width: 315px; box-shadow: 0 16px 40px rgba(0,0,0,.45); border-radius: 8px;"
     />
   </a>
   </div>
