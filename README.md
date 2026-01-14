@@ -103,6 +103,38 @@ You are free to use these scripts in your environments. Attribution is appreciat
 
 ## ⚡ More from DevSecOpsDad
 
-Technical blog & experiments: [DevSecOpsDad.com](www.devsecopsdad.com)
+## ⚡ More from DevSecOpsDad
 
+Technical blog & experiments: [**🔗DevSecOpsDad.com**](www.devsecopsdad.com)
+
+<div style="text-align:left; margin: 2.5em 0;">
+    <p style="margin-top: 0.75em; font-size: 0.95em; opacity: 0.85;">
+    📘 <strong>Ultimate Microsoft XDR for Full Spectrum Cyber Defense</strong><br/>
+    Real-world detections, Sentinel, Defender XDR, and Entra ID — end to end
+  </p>
+  <a href="https://a.co/d/4vveVCI" target="_blank" rel="noopener noreferrer">
+    <img 
+      src="https://www.hanley.cloud/assets/img/Ultimate%20XDR%20for%20Full%20Spectrum%20Cyber%20Defense/cover11.jpg"
+      alt="Ultimate Microsoft XDR for Full Spectrum Cyber Defense"
+      style="max-width: 235px; box-shadow: 0 16px 40px rgba(0,0,0,.45); border-radius: 8px;"
+    />
+  </a>
+
+  ## ⚡ More from DevSecOpsDad
+
+Technical blog & experiments: [**🔗DevSecOpsDad.com**](www.devsecopsdad.com)
+
+<div style="text-align:left; margin: 2.5em 0;">
+    <p style="margin-top: 0.75em; font-size: 0.95em; opacity: 0.85;">
+    📘 <strong>KQL Toolbox</strong><br/>
+    Turning Logs into Decisions in Microsoft Sentinel & Defender XDR
+  </p>
+  <a href="https://a.co/d/4vveVCI" target="_blank" rel="noopener noreferrer">
+    <img 
+      src="https://www.hanley.cloud/assets/img/Ultimate%20XDR%20for%20Full%20Spectrum%20Cyber%20Defense/cover11.jpg"
+      alt="Ultimate Microsoft XDR for Full Spectrum Cyber Defense"
+      style="max-width: 235px; box-shadow: 0 16px 40px rgba(0,0,0,.45); border-radius: 8px;"
+    />
+  </a>
+  
 Long-form work (books, toolboxes, decision surfaces): this repo is part of that ecosystem
