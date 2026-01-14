@@ -1,18 +1,68 @@
-# The Cloud_Network_Assessment.ps1 script is a PowerShell-based network discovery and reporting tool designed for Azure environments.
-# It automates the collection of critical network configuration data across an Azure subscription, including Virtual Networks,
-# Network Security Groups (NSGs), Route Tables, Virtual Network Gateways, and Peering connections.
-#
-# This script is especially useful for cloud engineers, security architects, and consultants conducting network assessments, security reviews,
-# or documentation efforts. It outputs a set of CSV files for easy analysis and reporting, streamlining the visibility of Azure network topology and security posture.
-#
-# By running this script, you gain a comprehensive snapshot of your Azure network configuration, enabling better decision-making
-# around governance, segmentation, and cloud architecture optimization.
-#
-# Notes:
-# Ensure you're logged into Azure before running this script (Run Connect-AzAccount if not already authenticated)
-# Notes:
-# Ensure you're logged into Azure before running this script
-# Run Connect-AzAccount if not already authenticated
+<#
+.SYNOPSIS
+  Discovers and exports Azure network configuration data across a selected subscription
+  for assessment, review, and documentation purposes.
+
+.DESCRIPTION
+  The Cloud_Network_Assessment.ps1 script performs automated discovery of core Azure
+  networking resources and exports a consolidated inventory to CSV.
+
+  The script collects configuration data for:
+  - Virtual Networks and Subnets
+  - Network Security Groups and individual security rules
+  - Virtual Network Gateways and VPN connections
+  - Azure Firewalls and network rule collections
+  - Application Gateway listeners
+  - ExpressRoute circuits
+
+  Results are normalized into a single CSV file and compressed into a ZIP archive
+  for easy sharing, analysis, and reporting.
+
+  This script is intended for cloud engineers, security architects, and consultants
+  performing:
+  - Network security assessments
+  - Architecture reviews
+  - Governance and segmentation analysis
+  - Environment documentation and discovery
+
+  The output provides a point-in-time snapshot of Azure network topology and
+  security posture to support informed design and remediation decisions.
+
+.PARAMETER OutputDir
+  The directory where CSV and ZIP output files will be written.
+  The directory is created automatically if it does not exist.
+
+.INPUTS
+  None.
+
+.OUTPUTS
+  CSV file containing normalized Azure network inventory data.
+  ZIP archive containing the CSV export.
+
+.EXAMPLE
+  Example 1: Run an interactive network assessment
+  -----------------------------------------------
+  PS> Connect-AzAccount
+  PS> .\Cloud_Network_Assessment.ps1
+
+  Prompts the user to select an Azure subscription and generates a consolidated
+  network inventory report.
+
+.NOTES
+  Author  : DevSecOpsDad
+  Version : 1.0
+
+  Prerequisites:
+  - Azure PowerShell (Az module)
+  - Interactive Azure authentication (Connect-AzAccount)
+
+  Permissions:
+  - Reader or higher on the target subscription
+
+  The script prompts for subscription selection using Out-GridView.
+  If no subscription is selected, execution terminates safely.
+
+#>
 
 $OutputDir = "C:\AzureNetworkReport"
 $ZipPath = "$OutputDir\AzureNetworkReport.zip"
@@ -173,4 +223,5 @@ if (Test-Path $ZipPath) { Remove-Item $ZipPath -Force }
 Compress-Archive -Path $CombinedCsv -DestinationPath $ZipPath
 
 Write-Host "`n All results written to: $CombinedCsv"
+
 Write-Host "Zipped as: $ZipPath" -ForegroundColor Green
